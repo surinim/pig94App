@@ -9,7 +9,7 @@
 import React from 'react';
 import type {Node} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack'; 
 import {
   SafeAreaView,
   ScrollView,
@@ -20,6 +20,8 @@ import {
   View,
 } from 'react-native';
 
+import HomeScreen from './components/HomeScreen';
+
 import {
   Colors,
   DebugInstructions,
@@ -28,67 +30,34 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const Stack = createStackNavigator();
-
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
-    // <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-         <Stack.Screen name="Home" component={HomeScreen} /> 
-         <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
-    // </NavigationContainer>
+   	//네비게이션의 트리를 관리해주는 컴포넌트 
+     <NavigationContainer> 
+     {/* 네비게이션 기본틀의 스택을 생성 */} 
+       <Stack.Navigator> 
+         {/* 해당스택에 들어갈 화면 요소를 넣어준다. */}
+           <Stack.Screen name="Home" component={HomeScreen}/> 
+       </Stack.Navigator> 
+   </NavigationContainer> 
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
   highlight: {
     fontWeight: '700',
   },
+  homeScreen: { 
+    flex: 1, 
+      alignItems: 'center', 
+      justifyContent: 'center' 
+  } 
 });
 
 export default App;
