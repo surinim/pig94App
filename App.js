@@ -24,8 +24,6 @@ import {
   View,
 } from 'react-native';
 
-import HomeScreen from './components/HomeScreen';
-
 import {
   Colors,
   DebugInstructions,
