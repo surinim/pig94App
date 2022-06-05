@@ -10,6 +10,10 @@ import React from 'react';
 import type {Node} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './Screen/HomeScreen';
+import MainScreen from './Screen/MainScreen';
+import BottomTab from './Screen/BottomTab';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -63,12 +67,12 @@ const App: () => Node = () => {
   };
 
   return (
-    // <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-         <Stack.Screen name="Home" component={HomeScreen} /> 
-         <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
-    // </NavigationContainer>
+     <NavigationContainer>
+       <Stack.Navigator screenOptions = {{ headerShown: false }} initialRouteName={HomeScreen} >
+          <Stack.Screen name="Home" component={HomeScreen} /> 
+          <Stack.Screen name="Bottom" component={BottomTab} /> 
+       </Stack.Navigator>
+     </NavigationContainer>
   );
 };
 
