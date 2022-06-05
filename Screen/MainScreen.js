@@ -20,13 +20,13 @@ const MainScreen = (props) => {
                 <ScrollView style={[styles.scrollContainer]}>
                     <View style={[styles.itemRow]}>
                         <View style={[styles.item]}>
-                            <TouchableOpacity onPress={()=>{console.log("wish 클릭")}}>
+                            <TouchableOpacity onPress={()=>{props.navigation.navigate("WishDetail")}}>
                                 <Image source={require('../resource/sample/wish_sample.jpeg')} style={[styles.itemImage]}/>
                                 <Text style={[styles.itemTitle]}>Yacht Small Bag</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={[styles.item]}>
-                            <TouchableOpacity onPress={()=>{console.log("wish 클릭")}}>
+                            <TouchableOpacity onPress={()=>{props.navigation.navigate("WishDetail")}}>
                                 <Image source={require('../resource/sample/wish_sample2.jpeg')} style={[styles.itemImage]}/>
                                 <Text style={[styles.itemTitle]}>Silver Bag</Text>
                             </TouchableOpacity>
@@ -34,13 +34,13 @@ const MainScreen = (props) => {
                     </View>
                     <View style={[styles.itemRow]}>
                         <View style={[styles.item]}>
-                            <TouchableOpacity onPress={()=>{console.log("wish 클릭")}}>
+                            <TouchableOpacity onPress={()=>{props.navigation.navigate("WishDetail")}}>
                                 <Image source={require('../resource/sample/wish_sample.jpeg')} style={[styles.itemImage]}/>
                                 <Text style={[styles.itemTitle]}>Yacht Small Bag</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={[styles.item]}>
-                            <TouchableOpacity onPress={()=>{console.log("wish 클릭")}}>
+                            <TouchableOpacity onPress={()=>{props.navigation.navigate("WishDetail")}}>
                                 <Image source={require('../resource/sample/wish_sample2.jpeg')} style={[styles.itemImage]}/>
                                 <Text style={[styles.itemTitle]}>Silver Bag</Text>
                             </TouchableOpacity>
@@ -48,13 +48,13 @@ const MainScreen = (props) => {
                     </View>
                     <View style={[styles.itemRow]}>
                         <View style={[styles.item]}>
-                            <TouchableOpacity onPress={()=>{console.log("wish 클릭")}}>
+                            <TouchableOpacity onPress={()=>{props.navigation.navigate("WishDetail")}}>
                                 <Image source={require('../resource/sample/wish_sample.jpeg')} style={[styles.itemImage]}/>
                                 <Text style={[styles.itemTitle]}>Yacht Small Bag</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={[styles.item]}>
-                            <TouchableOpacity onPress={()=>{console.log("wish 클릭")}}> 
+                            <TouchableOpacity onPress={()=>{props.navigation.navigate("WishDetail")}}> 
                                 <Image source={require('../resource/sample/wish_sample2.jpeg')} style={[styles.itemImage]}/>
                                 <Text style={[styles.itemTitle]}>Silver Bag</Text>
                             </TouchableOpacity>
@@ -62,13 +62,13 @@ const MainScreen = (props) => {
                     </View>
                     <View style={[styles.itemRow]}>
                         <View style={[styles.item]}>
-                            <TouchableOpacity onPress={()=>{console.log("wish 클릭")}}> 
+                            <TouchableOpacity onPress={()=>{props.navigation.navigate("WishDetail")}}> 
                                 <Image source={require('../resource/sample/wish_sample.jpeg')} style={[styles.itemImage]}/>
                                 <Text style={[styles.itemTitle]}>Yacht Small Bag</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={[styles.item]}>
-                            <TouchableOpacity onPress={()=>{console.log("wish 클릭")}}>     
+                            <TouchableOpacity onPress={()=>{props.navigation.navigate("WishDetail")}}>     
                                 <Image source={require('../resource/sample/wish_sample2.jpeg')} style={[styles.itemImage]}/>
                                 <Text style={[styles.itemTitle]}>Silver Bag</Text>
                             </TouchableOpacity>
@@ -85,9 +85,12 @@ const MainScreen = (props) => {
 const HeaderArea = () => {
     return(
         <View style={{flexDirection: 'column', paddingHorizontal: 20, paddingVertical: 10}}>
-            <View style={{alignItems: 'flex-end'}}>
+            <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
                 <TouchableOpacity onPress={()=>{}}>
-                    <Image source={require('../resource/common/setting_sliders.png')} style={{width:20,height:20}}/>
+                    <Image source={require('../resource/common/addWish.png')} style={{width:20, height:20}}/>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>{}}>
+                    <Image source={require('../resource/common/setting_sliders.png')} style={{width:20, height:20, marginLeft:10}}/>
                 </TouchableOpacity>
             </View>
         </View>

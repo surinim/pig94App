@@ -13,6 +13,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './Screen/HomeScreen';
 import MainScreen from './Screen/MainScreen';
 import BottomTab from './Screen/BottomTab';
+import WishDetailScreen from './Screen/WishDetailScreen';
 
 import {
   SafeAreaView,
@@ -44,6 +45,7 @@ const App = () => {
        <Stack.Navigator screenOptions = {{ headerShown: false }} initialRouteName={HomeScreen} >
           <Stack.Screen name="Home" component={HomeScreen} /> 
           <Stack.Screen name="Bottom" component={BottomTab} /> 
+          <Stack.Screen name="WishDetail" component={WishDetailScreen} /> 
        </Stack.Navigator>
      </NavigationContainer>
   );
