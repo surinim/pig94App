@@ -14,6 +14,7 @@ import HomeScreen from './Screen/HomeScreen';
 import MainScreen from './Screen/MainScreen';
 import BottomTab from './Screen/BottomTab';
 import WishDetailScreen from './Screen/WishDetailScreen';
+import WishAddScreen from './Screen/WishAddScreen';
 
 import {
   SafeAreaView,
@@ -46,6 +47,7 @@ const App = () => {
           <Stack.Screen name="Home" component={HomeScreen} /> 
           <Stack.Screen name="Bottom" component={BottomTab} /> 
           <Stack.Screen name="WishDetail" component={WishDetailScreen} /> 
+          <Stack.Screen name="WishAdd" component={WishAddScreen} /> 
        </Stack.Navigator>
      </NavigationContainer>
   );

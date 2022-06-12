@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useRef} from 'react';
 import {
     SafeAreaView,
     ScrollView,
@@ -11,16 +11,28 @@ import {
   } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { render } from 'react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod';
-  
+import { useNavigation } from '@react-navigation/native';
+import RBSheet from "react-native-raw-bottom-sheet";
+
 const MainScreen = (props) => {
+    const navigation = useNavigation();
+    const [popup,setPopup] = useState(false);
+    const refRBSheet = useRef();
+    const getPopup = (popup) => {
+        setPopup(popup);
+
+        if(popup)
+            refRBSheet.current.open();
+    }
+
     return (
         <View style={[styles.container]}> 
             <SafeAreaView>
-                <HeaderArea/>
+                <HeaderArea props={props} getPopup={getPopup} />
                 <ScrollView style={[styles.scrollContainer]}>
                     <View style={[styles.itemRow]}>
                         <View style={[styles.item]}>
-                            <TouchableOpacity onPress={()=>{props.navigation.navigate("WishDetail")}}>
+                            <TouchableOpacity onPress={()=>{navigation.navigate("WishDetail")}}>
                                 <Image source={require('../resource/sample/wish_sample.jpeg')} style={[styles.itemImage]}/>
                                 <Text style={[styles.itemTitle]}>Yacht Small Bag</Text>
                             </TouchableOpacity>
@@ -75,6 +87,19 @@ const MainScreen = (props) => {
                         </View>
                     </View>
                 </ScrollView>
+                <RBSheet
+                    ref={refRBSheet}
+                    height={300}
+                    openDuration={250}
+                    customStyles={{
+                        container: {
+                        justifyContent: "center",
+                        alignItems: "center"
+                        }
+                    }}
+                    >
+                    <View><Text>뇸뇸</Text></View>
+                </RBSheet>
             </SafeAreaView>
         </View>
     )
@@ -82,14 +107,15 @@ const MainScreen = (props) => {
 }
 
 
-const HeaderArea = () => {
+const HeaderArea = ({getPopup}) => {
+    const navigation = useNavigation();
     return(
         <View style={{flexDirection: 'column', paddingHorizontal: 20, paddingVertical: 10}}>
             <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
-                <TouchableOpacity onPress={()=>{}}>
+                <TouchableOpacity onPress={()=>{navigation.navigate("WishAdd")}}>
                     <Image source={require('../resource/common/addWish.png')} style={{width:20, height:20}}/>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={()=>{}}>
+                <TouchableOpacity onPress={() => {getPopup(true)}}>
                     <Image source={require('../resource/common/setting_sliders.png')} style={{width:20, height:20, marginLeft:10}}/>
                 </TouchableOpacity>
             </View>
