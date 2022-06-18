@@ -15,7 +15,8 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { render } from 'react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod';
 //selectbox module
 import SelectDropdown from 'react-native-select-dropdown'
-import * as ImagePicker from 'expo-image-picker'
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+// import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions'
 const WishAddScreen = (props) => {
     const navigation = useNavigation();
     const [categoryChangeColor,setCategoryChangeColor] = useState();
@@ -23,17 +24,37 @@ const WishAddScreen = (props) => {
     const [brandNameChangeColor,setBrandNameChangeColor] = useState();
     const [priceChangeColor,setPriceChangeColor] = useState();
     const [linkChangeColor,setLinkChangeColor] = useState();
-    const category = ["옷", "신발", "가방", "악세서리", "대뽕"];
-    const [status, requestPermission] = ImagePicker.useMediaLibraryPermissions();
+    const [image,setImage] = useState();
 
-    const uploadImage = async () => {
-        if(!status?.granted) {
-            const permission = await requestPermission();
-            console.log("!!!!! : " + permission);
-            if(!permission.granted){
-                return null;
-            }
-        }
+    const category = ["옷", "신발", "가방", "악세서리", "대뽕"];
+
+    
+
+    // const changeProfileImage = () => {
+    //     console.log("!!!");
+    //     console.log(PERMISSIONS.IOS.PHOTO_LIBRARY);
+    //     check(PERMISSIONS.IOS.PHOTO_LIBRARY).then((result) => {
+    //         // switch(result) {
+    //             console.log(result);
+    //             // case RESULTS.BLOCKED:
+    //                 // toast.show('앨범 권한이 필요합니다.');
+    //                 // break;
+    //         // }
+    //     }).catch(err=>{
+
+    //     });
+    // }
+
+    const pickImage = async () => {
+
+        const  result  =  await  launchImageLibrary ({
+            maxWidth:200,
+            maxHeight:200,
+            mediaType:'photo',
+            quality : 1,
+        }) ;
+
+        console.log(result);
     }
 
     return (
@@ -87,7 +108,7 @@ const WishAddScreen = (props) => {
                 </View>
 
                 <View style={{marginTop:50}}>
-                    <TouchableOpacity onPress={()=>{null}}>
+                    <TouchableOpacity onPress={()=>{pickImage()}}>
                         <View>
                             <Text> + (이미지추가)</Text>
                         </View>
@@ -126,6 +147,7 @@ const HeaderArea = () => {
     )
     
 }
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FFFFFF'
