@@ -11,8 +11,10 @@ import type {Node} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './Screen/HomeScreen';
+import MainHeader from './Screen/Common/MainHeader';
 import MainScreen from './Screen/MainScreen';
 import BottomTab from './Screen/BottomTab';
+import DetailItemScreen from './Screen/Item/DetailItemScreen';
 
 import {
   SafeAreaView,
@@ -42,8 +44,10 @@ const App = () => {
   return (
      <NavigationContainer>
        <Stack.Navigator screenOptions = {{ headerShown: false }} initialRouteName={HomeScreen} >
-          <Stack.Screen name="Home" component={HomeScreen} /> 
-          <Stack.Screen name="Bottom" component={BottomTab} /> 
+          <Stack.Screen name="Home" component={HomeScreen} options={{title: '', headerStyle: { backgroundColor: '#fff', shadowOffset: {height: 0}, elevation: 0}}} /> 
+          <Stack.Screen name="MainHeader" component={MainHeader} options={{title: '', headerStyle: { backgroundColor: '#fff', shadowOffset: {height: 0}, elevation: 0}}} />
+          <Stack.Screen name="Bottom" component={BottomTab} options={{title: '', headerStyle: { backgroundColor: '#fff', shadowOffset: {height: 0}, elevation: 0}}} />
+          <Stack.Screen name="DetailItemScreen" component={DetailItemScreen} options={{title: '', headerStyle: { backgroundColor: '#fff', shadowOffset: {height: 0}, elevation: 0}}} /> 
        </Stack.Navigator>
      </NavigationContainer>
   );

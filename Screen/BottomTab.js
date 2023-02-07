@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 function BottomTab() {
     return (
         <Tab.Navigator 
-            initialRouteName='Main'
+             initialRouteName='Main'
             // screenOptions={{
             //     tabBarActiveTintColor: 'tomato',
             //     tabBarInactiveTintColor: 'gray'
@@ -38,20 +38,16 @@ function BottomTab() {
             <Tab.Screen 
                 name='Main' 
                 component={MainScreen}  
-                // options={
-                //     tabBarIcon: ({ focused, horizontal, tintColor }) => (
-                //         <Image source={require("../resource/common/menu_wishList.png")} style={[styles.menuIcon]} />
-                //     )
-                // }}
+                options={{
+                  headerShown:false
+                }}
             />
             <Tab.Screen 
                 name='My' 
                 component={MainScreen} 
-                // options={{ 
-                //     tabBarIcon: ({ focused, horizontal, tintColor }) => (
-                //         <Image source={require("../resource/common/menu_mypage.png")} style={[styles.menuIcon]} />
-                //     )
-                // }}
+                options={{
+                  headerShown:false
+                }}
             />
         </Tab.Navigator>
     );
