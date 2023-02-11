@@ -7,12 +7,14 @@ import {
     Text,
     useColorScheme,
     View,
-    Image
+    Image,
+    Button
   } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { render } from 'react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod';
 import { useNavigation } from '@react-navigation/native';
 import RBSheet from "react-native-raw-bottom-sheet";
+import MainHeader from './Common/MainHeader';
 
 const MainScreen = (props) => {
     const navigation = useNavigation();
@@ -28,7 +30,8 @@ const MainScreen = (props) => {
     return (
         <View style={[styles.container]}> 
             <SafeAreaView>
-                <HeaderArea props={props} getPopup={getPopup} />
+                <MainHeader props={props} getPopup={getPopup}/>
+                {/* <HeaderArea props={props} getPopup={getPopup} /> */}
                 <ScrollView style={[styles.scrollContainer]}>
                     <View style={[styles.itemRow]}>
                         <View style={[styles.item]}>
@@ -89,7 +92,7 @@ const MainScreen = (props) => {
                 </ScrollView>
                 <RBSheet
                     ref={refRBSheet}
-                    height={300}
+                    height={500}
                     openDuration={250}
                     customStyles={{
                         container: {
@@ -98,30 +101,47 @@ const MainScreen = (props) => {
                         }
                     }}
                     >
-                    <View><Text>뇸뇸</Text></View>
+                    <View style={[styles.filterContainer]}>
+                        <View style={[styles.filterHeader]}>
+                            <TouchableOpacity style={[styles.filterHeaderBtn]}
+                                onPress={(props)=>alert("색상")}>
+                                <Text style={[styles.filterHeaderTitle]}>색상</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={[styles.filterHeaderBtn]}
+                                onPress={(props)=>alert("가격대")}>
+                                <Text style={[styles.filterHeaderTitle]}>가격대</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={[styles.filterHeaderBtn]}
+                                onPress={(props)=>alert("상품상태")}>
+                                <Text style={[styles.filterHeaderTitle]}>상품상태</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={[styles.filterHeaderBtn]}
+                                onPress={(props)=>alert("브랜드")}>
+                                <Text style={[styles.filterHeaderTitle]}>브랜드</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <ScrollView style={[styles.filterScrollView]}>
+                        </ScrollView>
+                        <View style={[styles.filterBottom]}>
+                            <TouchableOpacity style={[styles.filterApplyBtn]}>
+                                <View>
+                                    <Text style={{color:'#fff',fontSize:15}}>적용</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity 
+                                style={[styles.filterCancleBtn]}
+                                onPress={()=>{alert("필터 안해앵")}}>
+                                <View>
+                                    <Text style={{color:'#fff',fontSize:15}}>초기화</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                 </RBSheet>
             </SafeAreaView>
         </View>
     )
 
-}
-
-
-const HeaderArea = ({getPopup}) => {
-    const navigation = useNavigation();
-    return(
-        <View style={{flexDirection: 'column', paddingHorizontal: 20, paddingVertical: 10}}>
-            <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
-                <TouchableOpacity onPress={()=>{navigation.navigate("WishAdd")}}>
-                    <Image source={require('../resource/common/addWish.png')} style={{width:20, height:20}}/>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => {getPopup(true)}}>
-                    <Image source={require('../resource/common/setting_sliders.png')} style={{width:20, height:20, marginLeft:10}}/>
-                </TouchableOpacity>
-            </View>
-        </View>
-    )
-    
 }
 
 const styles = StyleSheet.create({
@@ -154,6 +174,67 @@ const styles = StyleSheet.create({
         paddingHorizontal: 3
         , marginTop: 8
         , color: '#5F5F5F'
+    },
+
+
+    /** 필터 영역 */
+
+    filterContainer: {
+        width: '100%'
+        , height: '100%'
+        , alignItems: 'center'
+        , paddingHorizontal: 10
+        , paddingVertical: 30
+    },
+
+    filterHeader: {
+        width: '100%'
+        , height: 40
+        , flexDirection: 'row'
+    },
+
+    filterHeaderBtn: {
+        flex: 1
+        , marginRight: 10
+    },  
+
+    filterHeaderTitle: {
+        fontSize: 23
+        , fontWeight: '500'
+        , color: '#5F5F5F'
+    },
+
+    filterScrollView: {        
+        borderWidth: 1
+        , borderColor: '#FF0000'
+        , width: '100%'
+        , marginTop: 0
+    },
+
+    filterBottom: {
+        width: '100%'
+        , height: 50
+        , alignContent :'flex-end'
+        , flexDirection:'row'
+        , alignItems: 'center'
+        , justifyContent:'center'
+    },
+
+    filterApplyBtn: {
+        marginRight: 50
+        ,height: 45
+        ,width: 140
+        ,backgroundColor: 'black'
+        ,alignItems:'center'
+        ,justifyContent:'center'
+    },
+
+    filterCancleBtn: {
+        height: 45
+        ,width: 140
+        ,backgroundColor: '#BDBDBD'
+        ,alignItems: 'center'
+        ,justifyContent: 'center'
     }
   });
 
