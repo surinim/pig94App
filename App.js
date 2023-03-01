@@ -35,6 +35,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import MyPageScreen from './Screen/MyPageScreen';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -51,6 +52,7 @@ const App = () => {
           <Stack.Screen name="Bottom" component={BottomTab} options={{title: '', headerStyle: { backgroundColor: '#fff', shadowOffset: {height: 0}, elevation: 0}}} />
           <Stack.Screen name="WishDetail" component={WishDetailScreen} options={{title: '', headerStyle: { backgroundColor: '#fff', shadowOffset: {height: 0}, elevation: 0}}} /> 
           <Stack.Screen name="WishAdd" component={WishAddScreen} options={{title: '', headerStyle: { backgroundColor: '#fff', shadowOffset: {height: 0}, elevation: 0}}} />
+          <Stack.Screen name="MyPage" component={MyPageScreen} options={{title: '', headerStyle: { backgroundColor: '#fff', shadowOffset: {height: 0}, elevation: 0}}} />
        </Stack.Navigator>
      </NavigationContainer>
   );

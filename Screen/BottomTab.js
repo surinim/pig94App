@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import MainScreen from './MainScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MyPageScreen from './MyPageScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -44,7 +45,7 @@ function BottomTab() {
             />
             <Tab.Screen 
                 name='My' 
-                component={MainScreen} 
+                component={MyPageScreen} 
                 options={{
                   headerShown:false
                 }}
